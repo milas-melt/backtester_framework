@@ -20,20 +20,25 @@ when an asset's price breaks through a well-defined level of support or resistan
 - Else, hold.
 
 #### Performance
+
 <img width="855" alt="Screenshot 2023-06-03 at 20 00 42" src="https://github.com/milas-melt/backtester_framework/assets/55765976/c2ac1b96-b262-4ac1-977c-d133cce4f77a">
 
 ### Mean Std 
 #### Signal strat
+
 - Long when return is higher than mean +1 * std 
 - Short when return is below the mean -1 * std
 - Else, hold.
 
 #### Performance
+
 <img width="855" alt="Screenshot 2023-06-03 at 20 01 11" src="https://github.com/milas-melt/backtester_framework/assets/55765976/3840b20e-1931-4f30-88f2-77a7c4fe3f59">
 
 ### Combine the two criteria
 Many ways of doing so. Assuming no tx fees, one solution is to compute the equally weighted average of both signals.
+
 #### Performance
+
 <img width="855" alt="Screenshot 2023-06-03 at 20 01 33" src="https://github.com/milas-melt/backtester_framework/assets/55765976/cbbfba57-251c-443e-b5a3-1737e9b007d7">
 
 ## Lookback straddle delta MA crossover
@@ -41,7 +46,9 @@ Many ways of doing so. Assuming no tx fees, one solution is to compute the equal
 
 ![image](https://github.com/milas-melt/backtester_framework/assets/55765976/400f06b4-f339-4a92-9e91-6f183e4b9443)
 We assume the first day price is one and compute the subsequent price based on. We then compute that 5 day Moving Average of the delta. We choose to use the delta’s MA rather than the price volatility since it can catch up the reversal more quickly, as shown in the figure below. 
+
 Thus, it would be helpful to limit our loss.
+
 <img width="671" alt="Screenshot 2023-06-03 at 20 19 04" src="https://github.com/milas-melt/backtester_framework/assets/55765976/8f3459ce-780e-4623-9792-dd001f124f07">
 
 ### Signal strat
@@ -50,6 +57,7 @@ The signals are generated as follow:
 - If the current delta crosses the 5 Day delta MA to go up, we buy.
 
 ### Performance
+
 <img width="671" alt="Screenshot 2023-06-03 at 20 19 45" src="https://github.com/milas-melt/backtester_framework/assets/55765976/a04cc323-a4aa-4fcc-b802-416a7a2762cf">
 
 <img width="671" alt="Screenshot 2023-06-03 at 20 20 03" src="https://github.com/milas-melt/backtester_framework/assets/55765976/ded10791-e3ca-4992-8ee8-5c3b640f7a55">
@@ -58,6 +66,7 @@ According to both performance graphs, it is clear that although the strategy gen
 
 ## Machine Learning Methods
 First, the prophet model was used to decompose the returns into different time intervals, according to the signals seasonalities and patterns (such as harvesing cycles for agricultural commodities, for instance).
+
 <img width="655" alt="Screenshot 2023-06-03 at 20 24 51" src="https://github.com/milas-melt/backtester_framework/assets/55765976/9ad71bd3-95b1-4dc6-b9c0-da488bb256c9">
 
 Then, these variables are fed in a random forest model for future return predictions.
