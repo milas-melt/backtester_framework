@@ -38,6 +38,7 @@ Many ways of doing so. Assuming no tx fees, one solution is to compute the equal
 
 ## Lookback straddle delta MA crossover
 ### Method
+
 ![image](https://github.com/milas-melt/backtester_framework/assets/55765976/400f06b4-f339-4a92-9e91-6f183e4b9443)
 We assume the first day price is one and compute the subsequent price based on. We then compute that 5 day Moving Average of the delta. We choose to use the delta’s MA rather than the price volatility since it can catch up the reversal more quickly, as shown in the figure below. 
 Thus, it would be helpful to limit our loss.
